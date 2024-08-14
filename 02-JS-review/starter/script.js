@@ -142,3 +142,130 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+/*
+const book = getBook(3);
+
+const { title, author, genres } = book;
+// console.log(title, author, genres);
+// Rest operator, gives you the remaining elements in the array
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+// console.log(otherGenres);
+// spread operator, will return a single new array with new values added to the array passed
+const newGenres = [...genres, "epic fantasy"];
+// console.log(newGenres);
+const updatedBook = {
+  ...book,
+  moviePublicationDate: "2001-12-19",
+  pages: 1210,
+};
+// console.log(updatedBook);
+updatedBook;
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => str.split("-")[0];
+// console.log(getYear(publicationDate));
+
+// const summary = `${title}, a ${
+//   book.pages
+// }-page long book, was written by ${author} and published in ${getYear(
+//   book.publicationDate
+// )}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
+// summary;
+
+console.log("jonas" && "some string");
+
+
+book.pages;
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews.goodreads.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
+*/
+
+/*
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews.goodreads.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+const books = getBooks();
+
+const titles = books.map((book) => book.title);
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+
+// Filtering
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation); // can chain or just use && operator
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+// console.log(adventureBooks);
+
+// Sorting
+const sortedPages = books.slice().sort((a, b) => a.pages - b.pages);
+// console.log(sortedPages);
+// me
+const nums = [1, 2, 3, 4, 5, 6];
+let numArray = [];
+for (const n of nums) {
+  numArray = [...numArray, n];
+}
+numArray;
+
+books;
+// Arrays
+const newBook = {
+  id: 6,
+  title: "Baby Bombers",
+  author: "Bryan Hoch",
+};
+// Adding book
+const booksAfterAddingNewBook = [...books, newBook];
+booksAfterAddingNewBook;
+
+// Deleting item
+const booksAfterDelete = books.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+// Updating array
+const booksAfterUpdate = books.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+booksAfterUpdate;
+*/
+
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  return data;
+}
+
+const todos = await getTodos();
+todos;
+
+function getTodo(id) {
+  return todos.find((todo) => todo.id === id);
+}
+
+const todo = getTodo(3);
+console.log(todo);
+
